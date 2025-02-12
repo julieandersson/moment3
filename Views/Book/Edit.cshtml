@@ -4,8 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Redigera bok</h2>
+<h1>Edit</h1>
 
+<h4>BookModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,11 +19,6 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Author" class="control-label"></label>
-                <input asp-for="Author" class="form-control" />
-                <span asp-validation-for="Author" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
@@ -33,14 +29,19 @@
                 <span asp-validation-for="PublishedYear" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Spara" class="btn btn-primary" />
+                <label asp-for="AuthorModelId" class="control-label"></label>
+                <select asp-for="AuthorModelId" class="form-control" asp-items="ViewBag.AuthorModelId"></select>
+                <span asp-validation-for="AuthorModelId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Tillbaka till boksamlingen</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
