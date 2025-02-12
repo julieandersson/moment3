@@ -48,7 +48,7 @@ namespace moment3.Controllers
         // GET: Book/Create
         public IActionResult Create()
         {
-            ViewData["AuthorModelId"] = new SelectList(_context.Authors, "Id", "Id");
+            ViewData["AuthorModelId"] = new SelectList(_context.Authors, "Id", "Name");
             return View();
         }
 
@@ -82,7 +82,7 @@ namespace moment3.Controllers
             {
                 return NotFound();
             }
-            ViewData["AuthorModelId"] = new SelectList(_context.Authors, "Id", "Id", bookModel.AuthorModelId);
+            ViewData["AuthorModelId"] = new SelectList(_context.Authors, "Id", "Name", bookModel.AuthorModelId);
             return View(bookModel);
         }
 

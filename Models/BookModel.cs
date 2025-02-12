@@ -14,7 +14,13 @@ namespace moment3.Models {
         [Display(Name = "Publiceringsår")]
         public int PublishedYear { get; set; }
 
+        [Display(Name = "Författare")]
         public int? AuthorModelId { get; set; }
+
+        [Display(Name = "Författare")]
         public AuthorModel? Author { get; set; }
+
+        // property för att undvika null-fel
+        public string AuthorName => Author?.Name ?? "Okänd författare";
     }
 }
