@@ -1,45 +1,53 @@
 @model moment3.Models.BookModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Redigera bok";
 }
 
-<h2>Redigera bok</h2>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PublishedYear" class="control-label"></label>
-                <input asp-for="PublishedYear" class="form-control" />
-                <span asp-validation-for="PublishedYear" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AuthorModelId" class="control-label"></label>
-                <select asp-for="AuthorModelId" class="form-control" asp-items="ViewBag.AuthorModelId"></select>
-                <span asp-validation-for="AuthorModelId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Spara ändringar" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<h2 class="mb-4 text-center">✏️ Redigera bok</h2>
 
-<div>
-    <a asp-action="Index">Tillbaka till boksamlingen</a>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-lg p-4">
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="mb-3">
+                        <label asp-for="Title" class="form-label fw-bold"></label>
+                        <input asp-for="Title" class="form-control" placeholder="Ange boktitel" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label fw-bold"></label>
+                        <textarea asp-for="Description" class="form-control" rows="4" placeholder="Uppdatera beskrivningen"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="PublishedYear" class="form-label fw-bold"></label>
+                        <input asp-for="PublishedYear" class="form-control" placeholder="Ex: 2023" />
+                        <span asp-validation-for="PublishedYear" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="AuthorModelId" class="form-label fw-bold"></label>
+                        <select asp-for="AuthorModelId" class="form-select" asp-items="ViewBag.AuthorModelId">
+                            <option value="">Välj en författare</option>
+                        </select>
+                        <span asp-validation-for="AuthorModelId" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-success btn-lg">Spara ändringar</button>
+                        <a asp-action="Index" class="btn btn-secondary btn-lg">Avbryt</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section Scripts {
