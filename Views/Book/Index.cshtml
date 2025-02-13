@@ -34,7 +34,12 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                
+                @(
+                // kortar ner beskrivning till 100 tecken och "..." för att istället läsa hela beskrivningen på "se detaljer"
+                string.IsNullOrEmpty(item.Description) ? "" : 
+                 (item.Description.Length > 100 ? item.Description.Substring(0, 100) + "..." : item.Description))
+
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PublishedYear)
