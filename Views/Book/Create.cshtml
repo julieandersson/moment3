@@ -1,44 +1,56 @@
 @model moment3.Models.BookModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Lägg till";
 }
 
-<h2>Lägg till ny bok</h2>
+<h2 class="mb-4 text-center">Lägg till ny bok</h2>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-lg p-4">
+            <div class="card-body">
+
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Title" class="form-label fw-bold"></label>
+                        <input asp-for="Title" class="form-control" placeholder="Ange boktitel" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label fw-bold"></label>
+                        <textarea asp-for="Description" class="form-control" rows="4" placeholder="Beskriv boken"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="PublishedYear" class="form-label fw-bold"></label>
+                        <input asp-for="PublishedYear" class="form-control" placeholder="Ex: 2023" />
+                        <span asp-validation-for="PublishedYear" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="AuthorModelId" class="form-label fw-bold"></label>
+                        <select asp-for="AuthorModelId" class="form-select" asp-items="ViewBag.AuthorModelId">
+                            <option value="">Välj en författare</option>
+                        </select>
+                        <span asp-validation-for="AuthorModelId" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success btn-lg">Lägg till</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PublishedYear" class="control-label"></label>
-                <input asp-for="PublishedYear" class="form-control" />
-                <span asp-validation-for="PublishedYear" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AuthorModelId" class="control-label"></label>
-                <select asp-for="AuthorModelId" class ="form-control" asp-items="ViewBag.AuthorModelId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Lägg till" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
+
+        <div class="text-center mt-3">
+            <a asp-action="Index" class="btn btn-secondary">Tillbaka till boksamlingen</a>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Tillbaka till boksamlingen</a>
 </div>
 
 @section Scripts {
