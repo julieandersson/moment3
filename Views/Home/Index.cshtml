@@ -1,8 +1,39 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Startsida";
 }
 
-<h2>Välkommen till min boksamling</h2>
-<section>
-    <p>Denna uppgift gick ut på att...</p>
+<h2 class="mb-4 mt-5 text-center">Välkommen till min boksamling</h2>
+
+<section class="text-center mb-5">
+    <p>
+        Denna webbapplikation ingår i <strong>moment 3</strong> i kursen <strong>DT191G</strong>. 
+        Syftet var att bygga en databasdriven webbapplikation med <strong>ASP.NET Core MVC</strong> och <strong>Entity Framework Core</strong> för att hantera en boksamling. 
+        Användaren kan skapa, läsa, uppdatera och ta bort böcker och författare (<strong>CRUD</strong>).
+    </p>
+    <p>
+        Databasen är skapad med <strong>Code First</strong>-metoden och består av två tabeller: <em>böcker</em> och <em>författare</em>. 
+        Användaren kan scrolla bland alla böcker, se detaljer, samt hantera författare som är kopplade till böckerna.
+    </p>
 </section>
+
+<div class="row justify-content-center">
+    <div class="col-md-5 mb-2">
+        <div class="card shadow-lg p-4 text-center">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Hantera böcker</h5>
+                <p class="card-text">Lägg till, redigera och ta bort böcker.</p>
+                <a asp-controller="Book" asp-action="Index" class="btn btn-primary">📚 Gå till boksamlingen</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-5 mb-2">
+        <div class="card shadow-lg p-4 text-center">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Hantera författare</h5>
+                <p class="card-text">Lägg till, redigera och ta bort författare.</p>
+                <a asp-controller="Author" asp-action="Index" class="btn btn-secondary">📖 Gå till författarlistan</a>
+            </div>
+        </div>
+    </div>
+</div>
