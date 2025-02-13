@@ -1,26 +1,33 @@
 @model moment3.Models.AuthorModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Ta bort författare";
 }
 
-<h2>Radera författare</h2>
+<h2 class="mb-4 text-center text-danger">Ta bort författare</h2>
 
-<h4>Är du säker på att du vill ta bort författaren?</h4>
-<div>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Ta bort" class="btn btn-danger" /> |
-        <a asp-action="Index">Tillbaka till författarlistan</a>
-    </form>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-lg p-4 border-danger">
+            <div class="card-body">
+                <div class="alert alert-danger text-center">
+                    <h5>Är du säker på att du vill ta bort författaren?</h5>
+                    <p>Denna åtgärd kan inte ångras.</p>
+                </div>
+
+                <div class="mb-3">
+                    <h6 class="fw-bold">Namn:</h6>
+                    <p class="text-muted">@Model.Name</p>
+                </div>
+
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-danger btn-lg">Ta bort</button>
+                        <a asp-action="Index" class="btn btn-secondary btn-lg">Avbryt</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
